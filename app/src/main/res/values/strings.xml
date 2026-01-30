@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FlowerApp</string>
+
+    <string name="dont_sign_up">Don\'t have an account? Sign up</string>
+</resources>
