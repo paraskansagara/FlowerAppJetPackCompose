@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -93,12 +94,13 @@ fun HomeScreen() {
 
 @Composable
 fun CategoryList() {
-
-    LazyRow(
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        items(categoryList.size) {
-            CategoryDesign(categoryList[it])
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(10.dp)) {
+        categoryList.forEach { icon ->
+            Box(
+                modifier = Modifier.weight(1f)
+            ) {
+                CategoryDesign(icon)
+            }
         }
     }
 
@@ -122,6 +124,7 @@ fun CategoryDesign(icon: Int) {
     Box(
         modifier = Modifier
             .padding(10.dp)
+            .aspectRatio(1f)
             .background(color = Color.White, shape = RoundedCornerShape(10.dp))
     ) {
         IconButton(
@@ -148,7 +151,9 @@ fun PopularContentCard(popularFlowerData: PopularItemsClass) {
             .wrapContentWidth()
             .padding(horizontal = 10.dp)
     ) {
-        Column(modifier = Modifier.fillMaxWidth().padding(10.dp)) {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp)) {
             Image(
                 modifier = Modifier.size(140.dp),
                 bitmap = ImageBitmap.imageResource(id = popularFlowerData.icon),
